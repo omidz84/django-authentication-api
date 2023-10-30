@@ -1,8 +1,8 @@
 # django-authentication-api
-django authentication api
-django rest framework
+#django authentication api
+#django rest framework
 
-1- custom model User
+#1- custom model User
 2- register User 
 3- login User 
 4- logout User
