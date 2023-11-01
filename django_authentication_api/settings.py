@@ -82,12 +82,12 @@ WSGI_APPLICATION = 'django_authentication_api.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': config('db_ENGINE'),
-        'NAME': config('db_NAME'),
-        'USER': config('db_USER'),
-        'PASSWORD': config('db_PASSWORD'),
-        'HOST': config('db_HOST'),
-        'PORT': config('PORT')
+        'ENGINE': config('DB_ENGINE'),
+        'NAME': config('DB_NAME'),
+        'USER': config('DB_USER'),
+        'PASSWORD': config('DB_PASSWORD'),
+        'HOST': config('DB_HOST'),
+        'PORT': config('DB_PORT')
     }
 }
 
@@ -136,6 +136,8 @@ MEDIA_URL = 'media/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+AUTH_USER_MODEL = 'user.User'
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
