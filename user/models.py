@@ -41,6 +41,7 @@ class User(AbstractUser):
         validators=[isnumeric],
         verbose_name=_('code melli')
     )
+    address = models.TextField(verbose_name=_('address'))
     location = model.GeometryField(geography=True, db_index=True, verbose_name=_('Location'))
     objects = MyUserManager()
 
