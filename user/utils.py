@@ -12,3 +12,9 @@ def get_tokens(user) -> dict:
         "refresh": str(refresh),
         "access": str(refresh.access_token)
     }
+
+
+class UserNotFoundException(Exception):
+
+    def __str__(self):
+        return 'error'
