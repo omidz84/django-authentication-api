@@ -129,3 +129,18 @@ class RefreshTokenSerializer(serializers.Serializer):
         settings.REDIS_JWT_TOKEN.set(name=refresh, value=refresh, ex=settings.REDIS_REFRESH_TIME)
         data = {'access': access, 'refresh': refresh}
         return data
+
+
+class UserProfileSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = [
+            'id',
+            'first_name',
+            'last_name',
+            'phone_number',
+            'code_melli',
+            'email',
+            'address',
+            'location'
+        ]
