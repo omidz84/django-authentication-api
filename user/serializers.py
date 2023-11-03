@@ -1,3 +1,5 @@
+from unicodedata import name
+
 from django.conf import settings
 from django.utils.translation import gettext as _
 from django.core.exceptions import ValidationError
@@ -95,3 +97,14 @@ class LoginUserSerializer(serializers.Serializer):
         except:
             return {'msg': _('The mobile number or password is not correct')}
 
+
+class LogoutUserSerializer(serializers.Serializer):
+    refresh = serializers.CharField(max_length=1000, required=True, label=_('refresh'))
+
+    def validate_refresh(self, data):
+        refresh = data
+        if settings.REDIS_JWT_TOKEN.get(name=refresh):
+            settings.REDIS_JWT_TOKEN.delete(refresh)
+            return data
+        else:
+            raise ValidationError(_('Token is invalid or expired'))
