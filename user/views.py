@@ -46,3 +46,12 @@ class RefreshTokenView(GenericAPIView):
 class UserProfileView(RetrieveUpdateAPIView):
     queryset = User.objects.all()
     serializer_class = serializers.UserProfileSerializer
+
+
+class ForgotPasswordPhoneNumberView(GenericAPIView):
+    serializer_class = serializers.ForgotPasswordPhoneNumberSerializer
+
+    def post(self, request: Request):
+        serializer = self.serializer_class(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        return Response(serializer.data, status.HTTP_200_OK)

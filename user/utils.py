@@ -14,7 +14,5 @@ def get_tokens(user) -> dict:
     }
 
 
-class UserNotFoundException(Exception):
-
-    def __str__(self):
-        return 'error'
+def send_sms(phone_number, msg):
+    pass
