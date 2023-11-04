@@ -1,3 +1,5 @@
+import random
+
 from django.conf import settings
 from django.utils.translation import gettext as _
 from django.core.exceptions import ValidationError
@@ -6,7 +8,7 @@ from rest_framework import serializers
 from rest_framework_simplejwt.tokens import RefreshToken
 
 from .models import User
-from .utils import get_tokens
+from .utils import get_tokens, send_sms
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -144,3 +146,20 @@ class UserProfileSerializer(serializers.ModelSerializer):
             'address',
             'location'
         ]
+
+
+class ForgotPasswordPhoneNumberSerializer(serializers.Serializer):
+    phone_number = serializers.CharField(required=True, label=_('phone number'))
+
+    def validate_phone_number(self, data):
+        try:
+            user = User.objects.get(phone_number=data)
+        except:
+            raise ValidationError(_('phone number invalid'))
+        otp_code = random.randint(10000, 99999)
+        if settings.REDIS_OTP_CODE.get(name=data):
+            raise ValidationError(_('The code has been sent'))
+        settings.REDIS_OTP_CODE.set(name=data, value=otp_code, ex=settings.REDIS_OTP_CODE_TIME)
+        send_sms(phone_number=data, msg=otp_code)
+        return otp_code
+
