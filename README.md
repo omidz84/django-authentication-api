@@ -9,3 +9,4 @@
 ```5- generate refresh token```
 ```6- forgot password```
 ```7- User profile```
+```8- custom permission```
