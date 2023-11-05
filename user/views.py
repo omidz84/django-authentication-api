@@ -67,3 +67,21 @@ class ForgotPasswordOtpCodeView(GenericAPIView):
         request.session['phone_number'] = serializer.validated_data['phone_number']
         request.session.modified = True
         return Response({'msg': _('code ok.')}, status.HTTP_200_OK)
+
+
+class ForgotPasswordNewPasswordView(GenericAPIView):
+    serializer_class = serializers.ForgotPasswordNewPasswordSerializer
+
+    def post(self, request: Request):
+        serializer = self.serializer_class(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        try:
+            phone_number = request.session.get('phone_number', str)
+            user = User.objects.get(phone_number=phone_number)
+            user.password = serializer.validated_data['password']
+            user.save()
+            del request.session['phone_number']
+        except:
+            return Response({'msg': _('You are not authorized')}, status.HTTP_400_BAD_REQUEST)
+
+        return Response({'msg': _('Password changed successfully')}, status.HTTP_200_OK)
