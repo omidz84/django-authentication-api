@@ -17,5 +17,3 @@ This project provides a Django Authentication API using Django Rest Framework. I
 7. User Profile: The API allows users to manage their profiles, including updating profile information.
 
 8. Custom Permissions: The project implements custom permissions to control user access to certain resources.
-
-Please refer to the documentation for detailed usage instructions and API endpoints.
