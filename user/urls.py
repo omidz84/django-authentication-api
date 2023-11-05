@@ -12,4 +12,5 @@ urlpatterns = [
     path('<int:pk>/profile/', views.UserProfileView.as_view(), name='profile'),
     path('forgot-password/', views.ForgotPasswordPhoneNumberView.as_view(), name='forgot-password'),
     path('forgot-password/verify/', views.ForgotPasswordOtpCodeView.as_view(), name='forgot-password-verify'),
+    path('forgot-password/new-password/', views.ForgotPasswordNewPasswordView.as_view(), name='forgot-password-new-password'),
 ]

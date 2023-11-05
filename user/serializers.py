@@ -187,3 +187,15 @@ class ForgotPasswordOtpCodeSerializer(serializers.Serializer):
         else:
             raise ValidationError(_('code is not valid'))
 
+
+class ForgotPasswordNewPasswordSerializer(serializers.Serializer):
+    password = serializers.CharField(min_length=8, label=_('new password'), write_only=True, required=True)
+    password2 = serializers.CharField(min_length=8, label=_('confirm password'), write_only=True, required=True)
+
+    def validate(self, data):
+        password = data.get('password')
+        password2 = data.get('password2')
+        if password != password2:
+            raise ValidationError(_('The passwords must match'))
+        else:
+            return data
