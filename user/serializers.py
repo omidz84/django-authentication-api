@@ -163,3 +163,27 @@ class ForgotPasswordPhoneNumberSerializer(serializers.Serializer):
         send_sms(phone_number=data, msg=otp_code)
         return otp_code
 
+
+class ForgotPasswordOtpCodeSerializer(serializers.Serializer):
+    phone_number = serializers.CharField(required=True, label=_('phone number'))
+    otp_code = serializers.CharField(required=True, label=_('code'))
+
+    def validate_phone_number(self, data):
+        try:
+            user = User.objects.get(phone_number=data)
+            return data
+        except:
+            raise ValidationError(_('phone number invalid'))
+
+    def validate_otp_code(self, data):
+        try:
+            phone_number = self.initial_data.get('phone_number')
+            redis_code = settings.REDIS_OTP_CODE.get(name=phone_number)
+            redis_code = redis_code.decode('utf-8')
+        except:
+            raise ValidationError(_('code is not valid'))
+        if redis_code == data:
+            return data
+        else:
+            raise ValidationError(_('code is not valid'))
+

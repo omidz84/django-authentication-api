@@ -55,3 +55,15 @@ class ForgotPasswordPhoneNumberView(GenericAPIView):
         serializer = self.serializer_class(data=request.data)
         serializer.is_valid(raise_exception=True)
         return Response(serializer.data, status.HTTP_200_OK)
+
+
+class ForgotPasswordOtpCodeView(GenericAPIView):
+    serializer_class = serializers.ForgotPasswordOtpCodeSerializer
+
+    def post(self, request: Request):
+        serializer = self.serializer_class(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        request.session.get('phone_number', str)
+        request.session['phone_number'] = serializer.validated_data['phone_number']
+        request.session.modified = True
+        return Response({'msg': _('code ok.')}, status.HTTP_200_OK)
