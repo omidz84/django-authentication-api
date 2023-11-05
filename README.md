@@ -1,12 +1,21 @@
-# django-authentication-api
+# Django Authentication API
 
-### django rest framework
+This project provides a Django Authentication API using Django Rest Framework. It includes the following features:
 
-```1- custom model User```
-```2- register User```
-```3- login User```
-```4- logout User```
-```5- generate refresh token```
-```6- forgot password```
-```7- User profile```
-```8- custom permission```
+1. Custom User Model: The project uses a custom user model to extend the default Django user model and include additional fields.
+
+2. User Registration: Users can register by providing necessary information such as username, email, and password.
+
+3. User Login: Registered users can log in using their credentials.
+
+4. User Logout: Authenticated users can log out of the system.
+
+5. Generate Refresh Token: The API generates refresh tokens for users, which can be used to refresh authentication tokens.
+
+6. Forgot Password: Users can recover their forgotten passwords by following the password recovery process.
+
+7. User Profile: The API allows users to manage their profiles, including updating profile information.
+
+8. Custom Permissions: The project implements custom permissions to control user access to certain resources.
+
+Please refer to the documentation for detailed usage instructions and API endpoints.
