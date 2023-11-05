@@ -1,7 +1,7 @@
 # django-authentication-api
 
 ### django rest framework
-<p style="background-color:Tomato;">hello</p>
+<p style="color:Tomato;">hello</p>
 ```1- custom model User```
 ```2- register User```
 ```3- login User```
