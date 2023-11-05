@@ -1,7 +1,15 @@
 # django-authentication-api
 
 ### django rest framework
-<p style="background-color:Tomato;">Lorem ipsum...</p>
+
+```diff
+- text in red
++ text in green
+! text in orange
+# text in gray
+@@ text in purple (and bold)@@
+```
+
 ```1- custom model User```
 ```2- register User```
 ```3- login User```
