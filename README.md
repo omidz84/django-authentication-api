@@ -20,21 +20,9 @@ This project provides a powerful Django Authentication API using Django Rest Fra
 
 - **Custom Permissions:** Establish granular control over user access to specific resources by leveraging custom permissions.
 
-## 📚 Documentation
-For detailed usage instructions and API endpoint documentation, please refer to our comprehensive documentation guide.
-
-## 🎨 Color Palette
-For a visually appealing user experience, we have used the following color palette:
-
-- Primary Color: #336699
-- Secondary Color: #FFC107
-- Accent Color: #28A745
-
-## 📝 Usage
-To get started with the Django Authentication API, follow the installation procedures outlined in the documentation. Make sure you have the necessary dependencies installed before running the application.
-
 ## 🤝 Contributing
 We welcome contributions from the open-source community to enhance the functionality and usability of our Django Authentication API. Feel free to fork this repository, make improvements, and submit a pull request.
 
 ## 📞 Contact
-If you have any questions, feedback, or concerns, please don't hesitate to get in touch with our support team at support@example.com.
+If you have any questions, feedback, or concerns, please don't hesitate to get in touch with 
+omizare57@gmail.com.
