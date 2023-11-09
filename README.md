@@ -18,7 +18,7 @@ This project provides a powerful Django Authentication API using Django Rest Fra
 
 - **User Profile Management:** The API includes functionality to manage user profiles, empowering users to update their information with ease.
 
-- **Custom Permissions:** Establish granular control over user access to specific resources by leveraging custom permissions.
+
 
 ## 🤝 Contributing
 We welcome contributions from the open-source community to enhance the functionality and usability of our Django Authentication API. Feel free to fork this repository, make improvements, and submit a pull request.
