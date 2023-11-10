@@ -7,6 +7,7 @@ from rest_framework.response import Response
 
 from .models import User
 from . import serializers
+from .permissions import IsOwner
 
 # Create your views here.
 
@@ -44,8 +45,9 @@ class RefreshTokenView(GenericAPIView):
 
 
 class UserProfileView(RetrieveUpdateAPIView):
+    permission_classes = [IsOwner]
     queryset = User.objects.all()
-    serializer_class = serializers.UserProfileSerializer
+    serializer_class = serializers.UserSerializer
 
 
 class ForgotPasswordPhoneNumberView(GenericAPIView):
