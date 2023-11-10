@@ -133,21 +133,6 @@ class RefreshTokenSerializer(serializers.Serializer):
         return data
 
 
-class UserProfileSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = User
-        fields = [
-            'id',
-            'first_name',
-            'last_name',
-            'phone_number',
-            'code_melli',
-            'email',
-            'address',
-            'location'
-        ]
-
-
 class ForgotPasswordPhoneNumberSerializer(serializers.Serializer):
     phone_number = serializers.CharField(required=True, label=_('phone number'))
 
